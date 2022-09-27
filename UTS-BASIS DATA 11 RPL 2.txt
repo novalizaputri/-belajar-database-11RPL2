@@ -1,0 +1,19 @@
+CREATE DATABASE apotik_novaliza;
+CREATE TABLE `apotik_novaliza`.`tb_obat` (`kode_obat` VARCHAR(25) NOT NULL , `nama_obat` VARCHAR(50) NOT NULL , `jenis` VARCHAR(50) NOT NULL , `satuan` VARCHAR(50) NOT NULL , `stok` INT(20) NOT NULL , `harga_beli` INT(20) NOT NULL , `harga_jual` INT(20) NOT NULL , PRIMARY KEY (`kode_obat`)) ENGINE = InnoDB;
+INSERT INTO `tb_obat` (`kode_obat`, `nama_obat`, `jenis`, `satuan`, `stok`, `harga_beli`, `harga_jual`) VALUES ('K001', 'Allerin 120cc', 'obat terbatas', 'botol', '50', '20000', '22000'), ('K002', 'becombion 110 ml', 'obat bebas', 'botol', '10', '15000', '16000'), ('K003', 'becombion 60ml', 'obat bebas', 'botol', '5', '8000', '9000'), ('K004', 'betadine vag plus', 'obat bebas', 'botol', '12', '12000', '13000'), ('K005', 'komix', 'obat bebas', 'lembar', '50', '4500', '5000'), ('K006', 'diazepam', 'obat keras', 'tablet', '4', '55000', '60000'), ('K007', 'CTM', 'obat bebas', 'tablet ', '3', '70000', '75000'), ('K008', 'amoxicillin', 'obat terbatas', 'tablet ', '74', '975', '1100'), ('K009', 'Antimo', 'obat bebass', 'tablet ', '2', '5100', '6000'), ('K010', 'parasetamol', 'obat bebas', 'strips', '100', '3000', '4000')
+soal 
+1.SELECT * FROM `tb_obat` WHERE satuan = "botol";
+2.SELECT * FROM `tb_obat` WHERE jenis = "obat keras" OR jenis = "obat terbatas";
+3.SELECT * FROM `tb_obat` WHERE stok <50 stok DESC;
+4.SELECT * FROM `TB_OBAT` WHERE satuan != 'tablet';
+5.SELECT * FROM `TB_OBAT` WHERE jenis = 'obat bebas' ORDER BY harga_jual ASC;
+6.SELECT * FROM tb_obat WHERE satuan = "botol" AND harga_beli BETWEEN 10000 AND 100000;
+7.SELECT * FROM `tb_obat` WHERE jenis = 'obat bebas' AND stok >=5;
+8.SELECT * FROM `tb_obat` WHERE  nama_obat LIKE'B%';
+9.SELECT * FROM `tb_obat` WHERE nama_obat LIKE "%OM%";
+10.SELECT satuan,SUM(stok) AS Stok_total FROM TB_OBAT GROUP BY satuan;
+11.SELECT  jenis,SUM(harga_jual) AS harga_total FROM tb_obat GROUP BY jenis;
+12.SELECT * FROM `tb_obat` WHERE kode_obat="K001" OR kode_obat="K003"OR kode_obat="K005"OR kode_obat="K007";
+13.SELECT nama_obat, stok, harga_beli, harga_jual, (harga_beli *stok) AS total_harga, (harga_jual *stok) AS total_harga FROM tb_obat;
+14. SELECT AVG(harga_jual) AS rata_rata FROM tb_obat WHERE satuan <> "lembar" GROUP BY satuan;
+15.SELECT MIN(harga_beli) AS harga_tertinggi, MAX(harga_beli) AS harga_terrendah FROM tb_obat;
